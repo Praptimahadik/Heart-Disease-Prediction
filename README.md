@@ -263,16 +263,16 @@ After training the machine learning models, their performance was evaluated usin
 For example, a model may show high accuracy but still fail to correctly identify patients with disease, which would be risky in a medical setting. Therefore, several evaluation metrics were used to measure performance from different perspectives, including Accuracy, Precision, Recall, F1-Score, and Confusion Matrix analysis.
 
 # Model Comparison Report
-Model Comparison Table (With and Without Tuning)
-    Model	                         Accuracy (Without Tuning)	Accuracy (With Tuning)	Cross-Validation Accuracy
-Logistic Regression                	         86.11%	         — (No tuning applied)	             —
-Random Forest	                               86.11%	                  83.33%	               82.22%
-Decision Tree	                               77.78%	                  77.78%	               67.78%
-Gradient Boosting	                           75.00%	                  77.78%	               77.78%
-XGBoost	                                     77.78%	                  83.33%	               81.11%
-Support Vector Machine	                     86.11%	                  83.33%	               81.11%
-K-Nearest Neighbors	                         83.33%	                  86.11%	               85.00%
 
+| Model | Accuracy (Without Tuning) | Accuracy (With Tuning) | Cross-Validation Accuracy |
+|---------|---------|---------|---------|
+| Logistic Regression | 86.11% | Not Tuned | N/A |
+| Random Forest | 86.11% | 83.33% | 82.22% |
+| Decision Tree | 77.78% | 77.78% | 67.78% |
+| Gradient Boosting | 75.00% | 77.78% | 77.78% |
+| XGBoost | 77.78% | 83.33% | 81.11% |
+| Support Vector Machine (SVM) | 86.11% | 83.33% | 81.11% |
+| K-Nearest Neighbors (KNN) | 83.33% | 86.11% | 85.00% |
 Based on model comparison, four models emerged as top performers:
 
 Logistic Regression
