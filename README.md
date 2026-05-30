@@ -98,79 +98,17 @@ For numerical variables, histograms along with density curves were plotted to an
 
 The main objective of plotting histograms was to understand the shape of distributions, whether variables followed normal distribution patterns, whether they were skewed, and whether extreme values or outliers existed.
 
-The age variable showed that a large number of patients were concentrated in middle-aged groups, indicating that heart disease cases in the dataset were more common among middle-aged and older individuals. This aligns with medical understanding that heart disease risk often increases with age.
-*The resting blood pressure distribution showed reasonable spread, but a few observations appeared on the higher side, suggesting possible extreme blood pressure values. This hinted at potential outliers that would later require treatment.
-
-The serum cholesterol variable also showed variability, with some patients having noticeably high cholesterol levels. Since high cholesterol is often linked to cardiovascular risk, this variable appeared potentially important for prediction. Some extreme values also suggested possible outliers.
-
-The distribution of maximum heart rate achieved appeared relatively moderate, with observations spread around central values. This feature seemed fairly well distributed without major abnormalities.
-
-The oldpeak variable, which measures ST depression, showed some skewness in its distribution, indicating non-symmetrical spread and possible presence of unusual values.
-
-Overall, univariate analysis of numerical features helped identify distribution patterns, feature variability, and potential outliers. These findings later supported decisions related to outlier detection and preprocessing.
-
 ####  1.2 Categorical Variable Analysis
 For categorical variables, countplots were used to visualize category frequencies and understand how observations were distributed across classes. The categorical variables analyzed included sex, chest pain type, number of major vessels, fasting blood sugar, resting ECG results, exercise induced angina, slope of peak exercise ST segment, and thal.
 
 The purpose of this analysis was to examine category frequencies, detect imbalance in categories, and understand how often certain medical conditions or attributes occurred in the patient population.
 
-The sex feature showed the distribution of male and female patients, helping assess whether one gender was more represented in the dataset.
-
-The chest pain type variable showed variation across categories, with some chest pain types occurring much more frequently than others. This is important because different chest pain types may carry different levels of heart disease risk.
-
-The number of major vessels feature revealed how vessel blockages were distributed across patients and suggested possible relevance in disease prediction.
-
-The fasting blood sugar feature helped observe the proportion of patients with elevated glucose levels.
-
-The resting ECG categories showed variation in heart electrical activity conditions.
-
-The exercise induced angina feature was particularly useful because the presence or absence of angina during exercise may indicate cardiac issues.
-
-Similarly, the slope of peak exercise ST segment and thal showed different category distributions, and these differences may contribute significantly to classification.
-
-From these plots, it was observed that certain chest pain categories appeared more frequently, thal categories showed noticeable variation, and some categorical features appeared likely to be strong disease indicators.
-
-Thus, categorical univariate analysis provided valuable insights into feature frequencies, possible imbalance, and medically important category patterns.
-
 ### Bivariate Analysis
 ####  Numerical Features vs Target
 To analyze the relationship between numerical variables and the target variable heart_disease_present, boxplots were used to compare the distribution of each continuous feature across the two target classes: patients without heart disease (0) and patients with heart disease (1). Boxplots are particularly useful because they display median values, spread, interquartile ranges, and outliers, making it easier to compare how each feature behaves across both groups.
 
-Age vs Heart Disease
-The boxplot for age showed that patients with heart disease generally tended to belong to slightly higher age groups compared to patients without heart disease. The median age for the disease group appeared higher, suggesting age may have a positive relationship with heart disease risk. Although there was overlap between the two classes, the shift in central tendency indicates age may contribute to prediction.
-
-Resting Blood Pressure vs Heart Disease
-The resting blood pressure boxplot showed that patients diagnosed with heart disease tended to have slightly higher blood pressure values compared to those without disease. The disease group also showed a wider spread and some extreme observations, suggesting greater variability in blood pressure among affected patients. This supports the medical relevance of blood pressure as a cardiovascular risk factor.
-
-Serum Cholesterol vs Heart Disease
-For serum cholesterol, the boxplot showed noticeable differences between the two groups. Patients with heart disease appeared to have relatively higher cholesterol levels, with a broader spread and presence of outliers. The larger variation and elevated values in the disease group suggest cholesterol may be an important predictor of heart disease.
-
-Maximum Heart Rate Achieved vs Heart Disease
-The boxplot for maximum heart rate achieved showed a contrasting pattern, where patients without heart disease generally reached higher heart rates compared to those with disease. The heart disease group showed relatively lower median values, which may indicate reduced cardiac performance among affected patients. This difference suggests maximum heart rate has strong predictive relevance.
-
-Oldpeak (ST Depression) vs Heart Disease
-Among all numerical variables, oldpeak showed one of the clearest distinctions between classes. Patients with heart disease generally exhibited higher ST depression values than patients without disease. The disease group showed higher medians and greater spread, indicating abnormal ST depression is strongly associated with heart disease presence. This suggests oldpeak may be one of the most influential predictors.
-
 ####  Categorical Features vs Target
 To analyze relationships between categorical variables and heart disease, countplots were generated using the target variable as the hue. These plots helped compare how category frequencies differed between patients with and without heart disease, allowing visual identification of features associated with higher disease risk.
-
-Sex vs Heart Disease
-The graph for sex showed variation in disease prevalence across gender categories. One gender appeared more represented among heart disease cases, suggesting sex may influence risk and contribute to prediction.
-
-Chest Pain Type vs Heart Disease
-The chest pain type countplot showed some of the strongest class differences. Certain chest pain categories had noticeably higher counts among patients with heart disease, while others appeared more common in non-disease cases. This strong separation suggests chest pain type is an important indicator and potentially a high-impact predictive feature.
-
-Number of Major Vessels vs Heart Disease
-The graph for number of major vessels showed a clear trend where certain vessel categories had higher association with heart disease. Patients with greater vessel involvement appeared more likely to belong to the disease class. This aligns with medical understanding and makes this feature highly significant.
-
-Exercise Induced Angina vs Heart Disease
-The countplot for exercise induced angina showed a strong contrast between the two classes. Patients experiencing exercise-induced angina appeared more frequently in the heart disease group, indicating a strong relationship with disease presence. This was one of the clearest categorical indicators.
-
-Thal vs Heart Disease
-The thal feature also showed strong variation between classes. Some thal categories were much more associated with heart disease than others, suggesting this variable carries substantial predictive power.
-
-Resting ECG and ST Segment Slope vs Heart Disease
-These variables showed moderate differences across target classes. While separation was not as strong as chest pain or thal, the graphs still suggested potential association with disease outcomes.
 
 ###  Multivariate Analysis
 While univariate and bivariate analyses study individual features and pairwise relationships, multivariate analysis explores interactions among multiple variables simultaneously.
@@ -243,13 +181,135 @@ Instead of removing records containing outliers, capping (winsorization) was use
 
 This method was chosen instead of deleting rows because the dataset contains only 180 observations, which is relatively small for machine learning. Removing records could reduce available information and weaken model training.
 
-Capping was preferred because:
-
-It retains all patient observations.
-It avoids losing potentially useful medical information.
-It reduces the influence of extreme values.
-It is safer for small datasets than deleting rows.
-It improves robustness without heavily altering distributions.
-Post-treatment boxplots showed reduced spread from extreme observations, confirming that outlier influence was successfully controlled.
-
 Overall, outlier treatment improved data quality while preserving dataset size and important patient information.
+
+# Encoding Categorical Variables
+After cleaning numerical features, categorical variables needed transformation because machine learning algorithms generally require numerical inputs and cannot directly process text-based categories.
+
+To convert categorical features into machine-readable format, One-Hot Encoding was applied using:
+df = pd.get_dummies(df, drop_first=True)
+One-hot encoding converts each category into separate binary columns containing 0s and 1s.
+
+For example, a variable such as thal with multiple categories gets transformed into multiple indicator columns representing each category.
+The parameter drop_first=True was specifically used to avoid the dummy variable trap, which occurs when encoded variables become perfectly correlated with one another.
+This also helps reduce multicollinearity, where highly correlated predictors can negatively impact some models such as Logistic Regression.
+
+# Multicollinearity Check
+After encoding, the next step was checking for multicollinearity, which occurs when predictor variables are highly correlated with one another.
+
+High multicollinearity can create problems such as:
+
+1) Unstable model coefficients
+2) Redundant information
+3) Reduced interpretability
+4) Poor generalization in some models
+   
+A correlation threshold of: Correlation > 0.8
+was used as an indicator of potentially problematic multicollinearity.
+After analyzing correlations, no feature pairs showed severe correlation above the threshold. Some moderate relationships existed, but no predictors were highly collinear.
+
+# Feature Scaling
+Once features were cleaned and encoded, scaling was performed.
+First, predictors and target variable were separated:
+
+X = df.drop('heart_disease_present',axis=1)
+y = df['heart_disease_present']
+Then Standardization was applied using StandardScaler.
+
+Why Scaling Was Necessary
+Features such as: Age,Blood pressure,Cholesterol exist on very different scales.
+For example:
+Cholesterol may be in hundreds Oldpeak may be small decimals
+Without scaling, large-scale variables may dominate model learning.
+##### Scaling is especially important for:
+
+Logistic Regression
+Support Vector Machine (SVM)
+K-Nearest Neighbors (KNN)
+These algorithms are sensitive to feature magnitude.
+Overall, scaling ensured balanced contribution from all numerical features.
+
+# Train-Test Split
+After preprocessing, the dataset was split into training and testing sets using:
+
+train_test_split(test_size=0.2)
+An 80-20 split was used:
+
+Training set: 144 observations (80%)
+Testing set: 36 observations (20%)
+Purpose of Train-Test Split:
+
+The training set was used for model learning. During this phase, algorithms identify relationships between predictors and target labels.
+The testing set was kept separate and used only after training to evaluate model performance on unseen data.
+
+# Class Distribution Check
+Before model training, the target variable distribution was examined.
+
+Class counts were:
+No heart disease (0): 100
+Heart disease present (1): 80
+
+Interpretation: 
+This indicates the dataset is fairly balanced, with both classes reasonably represented.
+
+# Model Building
+After completing data preprocessing, the next stage was model building, where multiple machine learning classification algorithms were trained and evaluated to identify the most effective model for predicting heart disease. Rather than relying on a single algorithm, several models were implemented to compare performance, understand how different algorithms capture patterns in the data, and select the most suitable model based on both predictive accuracy and generalization ability.
+
+Since this is a binary classification problem, the models were evaluated primarily using accuracy, confusion matrix analysis, cross-validation, and classification metrics such as precision, recall, and F1-score.
+
+# Evaluation Metrics Used
+After training the machine learning models, their performance was evaluated using multiple evaluation metrics rather than relying only on accuracy. In classification problems, especially in healthcare applications such as heart disease prediction, using multiple metrics is important because a single metric may not fully capture model performance.
+
+For example, a model may show high accuracy but still fail to correctly identify patients with disease, which would be risky in a medical setting. Therefore, several evaluation metrics were used to measure performance from different perspectives, including Accuracy, Precision, Recall, F1-Score, and Confusion Matrix analysis.
+
+# Model Comparison Report
+Model Comparison Table (With and Without Tuning)
+    Model	                         Accuracy (Without Tuning)	Accuracy (With Tuning)	Cross-Validation Accuracy
+Logistic Regression                	         86.11%	         — (No tuning applied)	             —
+Random Forest	                               86.11%	                  83.33%	               82.22%
+Decision Tree	                               77.78%	                  77.78%	               67.78%
+Gradient Boosting	                           75.00%	                  77.78%	               77.78%
+XGBoost	                                     77.78%	                  83.33%	               81.11%
+Support Vector Machine	                     86.11%	                  83.33%	               81.11%
+K-Nearest Neighbors	                         83.33%	                  86.11%	               85.00%
+
+Based on model comparison, four models emerged as top performers:
+
+Logistic Regression
+Random Forest
+Support Vector Machine
+Tuned K-Nearest Neighbors
+Each achieved:
+
+86.11% accuracy
+
+##### Why These Were Considered Best Models ?
+
+These models were considered strongest because they combined:
+
+Highest test accuracy
+Strong predictive capability
+Good generalization performance
+Consistent classification results
+
+##### Recommended Final Model
+Although multiple models tied in test accuracy, Tuned KNN can be selected as the final recommended model.
+
+# Suggestions to the Hospital to Reduce Heart Disease Risk and Prevent Life-Threatening Cases
+1. Strengthen Early Screening Programs
+One of the most important suggestions for hospitals is to strengthen early screening and cardiovascular risk assessment programs. Since the analysis showed that factors such as blood pressure, cholesterol, exercise-induced angina, and ECG-related features play an important role in predicting heart disease, hospitals should ensure routine screening for these indicators. Regular cardiac screening can help detect abnormalities at an early stage before they progress into severe disease. Special attention should be given to middle-aged and older patients as they may have higher risk. Early screening allows timely medical intervention, reduces complications, and can significantly lower the chances of fatal cardiac events.
+
+2. Use Predictive Analytics for Early Risk Identification
+Hospitals should consider integrating machine learning–based predictive models into their clinical workflow to support early identification of high-risk patients. Using patient medical attributes such as age, cholesterol levels, blood pressure, chest pain symptoms, and exercise-related indicators, predictive systems can help flag patients who may be at greater risk of heart disease. This can assist doctors in identifying silent or early-stage cases that may otherwise go unnoticed. Using predictive analytics as a decision-support tool can improve diagnosis, prioritize critical patients, and support preventive treatment planning, ultimately helping prevent life-threatening situations.
+
+3. Increase Preventive Cardiac Checkup Programs
+Hospitals should expand preventive cardiac health checkup programs and encourage routine cardiovascular evaluations, especially for patients with known risk factors such as hypertension, diabetes, obesity, smoking history, or family history of heart disease. Preventive checkups involving ECG testing, cholesterol screening, stress testing, and cardiac consultation can help identify risk early and reduce the probability of severe cardiac events. Instead of focusing only on treatment after symptoms worsen, hospitals should promote preventive monitoring as part of regular healthcare.
+
+4. Improve Patient Awareness and Education
+Another important suggestion is increasing awareness among patients about heart disease risks and prevention. Many serious cardiac cases can be reduced if patients recognize symptoms early and seek timely treatment. Hospitals should conduct awareness programs on maintaining heart health through healthy diet, regular exercise, smoking cessation, stress management, and regular medical checkups. Educating patients about warning signs such as chest pain, breathlessness, or exercise discomfort can lead to earlier consultation and reduce emergency situations. Prevention often begins with awareness.
+
+5. Focus on High-Risk Patient Monitoring
+Hospitals should establish stronger monitoring systems for patients identified as high risk. Patients with elevated blood pressure, high cholesterol, abnormal oldpeak values, exercise-induced angina, or major vessel abnormalities should receive closer follow-up and more proactive care. Instead of waiting for disease progression, hospitals can implement structured monitoring, regular follow-ups, and early interventions for these patients. Focused monitoring of vulnerable patients can help prevent complications such as heart attacks and improve long-term outcomes.
+
+6. Promote Lifestyle Intervention Programs
+Hospitals should invest more in lifestyle intervention programs aimed at reducing heart disease risk factors. Since many cardiovascular conditions are influenced by lifestyle habits, preventive programs focusing on nutrition, exercise, weight management, and stress reduction can play a major role in reducing disease burden. Hospitals can offer cardiac wellness counseling, diet guidance, and supervised preventive programs for at-risk patients. Encouraging healthier lifestyles can reduce future hospitalizations and life-threatening cardiac complications.
