@@ -273,6 +273,7 @@ For example, a model may show high accuracy but still fail to correctly identify
 | XGBoost | 77.78% | 83.33% | 81.11% |
 | Support Vector Machine (SVM) | 86.11% | 83.33% | 81.11% |
 | K-Nearest Neighbors (KNN) | 83.33% | 86.11% | 85.00% |
+
 Based on model comparison, four models emerged as top performers:
 
 Logistic Regression
