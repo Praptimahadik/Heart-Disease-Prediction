@@ -297,20 +297,20 @@ Consistent classification results
 Although multiple models tied in test accuracy, Tuned KNN can be selected as the final recommended model.
 
 # Suggestions to the Hospital to Reduce Heart Disease Risk and Prevent Life-Threatening Cases
-1. Strengthen Early Screening Programs
+##### 1. Strengthen Early Screening Programs: 
 One of the most important suggestions for hospitals is to strengthen early screening and cardiovascular risk assessment programs. Since the analysis showed that factors such as blood pressure, cholesterol, exercise-induced angina, and ECG-related features play an important role in predicting heart disease, hospitals should ensure routine screening for these indicators. Regular cardiac screening can help detect abnormalities at an early stage before they progress into severe disease. Special attention should be given to middle-aged and older patients as they may have higher risk. Early screening allows timely medical intervention, reduces complications, and can significantly lower the chances of fatal cardiac events.
 
-2. Use Predictive Analytics for Early Risk Identification
+##### 2. Use Predictive Analytics for Early Risk Identification: 
 Hospitals should consider integrating machine learning–based predictive models into their clinical workflow to support early identification of high-risk patients. Using patient medical attributes such as age, cholesterol levels, blood pressure, chest pain symptoms, and exercise-related indicators, predictive systems can help flag patients who may be at greater risk of heart disease. This can assist doctors in identifying silent or early-stage cases that may otherwise go unnoticed. Using predictive analytics as a decision-support tool can improve diagnosis, prioritize critical patients, and support preventive treatment planning, ultimately helping prevent life-threatening situations.
 
-3. Increase Preventive Cardiac Checkup Programs
+##### 3. Increase Preventive Cardiac Checkup Programs
 Hospitals should expand preventive cardiac health checkup programs and encourage routine cardiovascular evaluations, especially for patients with known risk factors such as hypertension, diabetes, obesity, smoking history, or family history of heart disease. Preventive checkups involving ECG testing, cholesterol screening, stress testing, and cardiac consultation can help identify risk early and reduce the probability of severe cardiac events. Instead of focusing only on treatment after symptoms worsen, hospitals should promote preventive monitoring as part of regular healthcare.
 
-4. Improve Patient Awareness and Education
+##### 4. Improve Patient Awareness and Education
 Another important suggestion is increasing awareness among patients about heart disease risks and prevention. Many serious cardiac cases can be reduced if patients recognize symptoms early and seek timely treatment. Hospitals should conduct awareness programs on maintaining heart health through healthy diet, regular exercise, smoking cessation, stress management, and regular medical checkups. Educating patients about warning signs such as chest pain, breathlessness, or exercise discomfort can lead to earlier consultation and reduce emergency situations. Prevention often begins with awareness.
 
-5. Focus on High-Risk Patient Monitoring
+##### 5. Focus on High-Risk Patient Monitoring
 Hospitals should establish stronger monitoring systems for patients identified as high risk. Patients with elevated blood pressure, high cholesterol, abnormal oldpeak values, exercise-induced angina, or major vessel abnormalities should receive closer follow-up and more proactive care. Instead of waiting for disease progression, hospitals can implement structured monitoring, regular follow-ups, and early interventions for these patients. Focused monitoring of vulnerable patients can help prevent complications such as heart attacks and improve long-term outcomes.
 
-6. Promote Lifestyle Intervention Programs
+##### 6. Promote Lifestyle Intervention Programs
 Hospitals should invest more in lifestyle intervention programs aimed at reducing heart disease risk factors. Since many cardiovascular conditions are influenced by lifestyle habits, preventive programs focusing on nutrition, exercise, weight management, and stress reduction can play a major role in reducing disease burden. Hospitals can offer cardiac wellness counseling, diet guidance, and supervised preventive programs for at-risk patients. Encouraging healthier lifestyles can reduce future hospitalizations and life-threatening cardiac complications.
